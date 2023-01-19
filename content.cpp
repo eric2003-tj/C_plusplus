@@ -1,16 +1,25 @@
 #include <iostream>
+#include <vector>
+#include <string>
 using namespace std;
-
 int main(){
-   // exercise of pointers
-   int *p1 = new int{36};
-   cout << "p1 is " << p1 <<'\n';
-   cout << "*p1 is " << *p1 <<'\n';
-   // implementing arrays
-   int *array1 = new int[20];
-   for(int i = 0;i< 20;i++){
-     array1[i] = i;
-     cout << "array1[" << i << "] :" << array1[i] <<'\n';
+   //vector
+   vector<int> vec = {4,2,3,4,1};
+   for(int i=0;i<vec.size();i++){
+      cout << "vec[" << i <<"] :" << vec[i] <<endl;
    }
-   delete[] array1;
+   vec[2] = 6;
+   for(int i=0;i<vec.size();i++){
+      cout << "vec[" << i <<"] :" << vec[i] <<endl;
+   }
+   vec.push_back(7);
+   for(int i=0;i<vec.size();i++){
+      cout << "vec[" << i <<"] :" << vec[i] <<endl;
+   }
+   //string
+   string hello{"Hello"};
+   cout << hello << '\n';
+   hello[3] = 'b';
+   cout << hello << '\n';
+
 }
