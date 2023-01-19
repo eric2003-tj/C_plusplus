@@ -1,0 +1,21 @@
+# depslib dependency file v1.0
+1674111127 source:d:\contents\assignment1\url.cpp
+	<string>
+	<iostream>
+	"Url.h"
+
+1674110529 d:\contents\assignment1\url.h
+	<string>
+
+1674111425 source:d:\contents\assignment-1\main.cpp
+	<iostream>
+	"Url.h"
+
+1674111501 d:\contents\assignment-1\url.h
+	<string>
+
+1674111509 source:d:\contents\assignment-1\url.cpp
+	<string>
+	<iostream>
+	"Url.h"
+
