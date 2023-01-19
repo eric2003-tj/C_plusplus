@@ -3,23 +3,20 @@
 #include <string>
 using namespace std;
 int main(){
-   //vector
-   vector<int> vec = {4,2,3,4,1};
-   for(int i=0;i<vec.size();i++){
-      cout << "vec[" << i <<"] :" << vec[i] <<endl;
+   // two-dimensional
+   int di_array[4][2] = {{1,2},{3,4},{5,6},{7,8}};
+   for(int i = 0;i<4;i++){
+     for(int j=0;j<2;j++){
+        cout << "array[" << i << "][" << j << "]:" << di_array[i][j] << " ";
+     }
+     cout << endl;
    }
-   vec[2] = 6;
-   for(int i=0;i<vec.size();i++){
-      cout << "vec[" << i <<"] :" << vec[i] <<endl;
+   //flatten
+   int arr[8] = {1,2,3,4,5,6,7,8};
+   for(int i=0;i<4;i++){
+     for(int j=0;j<2;j++){
+        cout << "array[" << i << "][" << j << "]:" << arr[4*i+j] << " ";
+     }
+     cout << endl;
    }
-   vec.push_back(7);
-   for(int i=0;i<vec.size();i++){
-      cout << "vec[" << i <<"] :" << vec[i] <<endl;
-   }
-   //string
-   string hello{"Hello"};
-   cout << hello << '\n';
-   hello[3] = 'b';
-   cout << hello << '\n';
-
 }
