@@ -4,16 +4,14 @@
 #include <cstdint>
 using namespace std;
 using namespace std::literals;
-void print(char *str){
-   cout << str << endl;
-   return ;
-}
 int main(){
-   // casting
-   // static-cast dynamic-cast reinterpret-cast const-cast
-   int a = 65;
-   cout << static_cast<char>(a) << endl;
-   const char* url = R"(https://www.udemy.com/course/learn-intermediate-modern-c/learn/lecture/29453340#questions)";
-   print(const_cast<char*>(url));
-
+   string hello{"Hello World!"};
+   for(string::iterator it = hello.begin();it!=hello.end();it++){
+      cout << *it << ",";
+   }
+   cout << endl;
+   vector<int> arr = {3,4,5,6,9};
+   for(vector<int>::iterator it = arr.begin();it!=arr.end();it++){
+      cout << *it << ",";
+   }
 }
