@@ -5,13 +5,18 @@
 using namespace std;
 using namespace std::literals;
 int main(){
-   string hello{"Hello World!"};
-   for(string::iterator it = hello.begin();it!=hello.end();it++){
-      cout << *it << ",";
+   auto str{"string"s};
+   auto num{42};
+   cout << str + "sss"s << endl;
+   cout << num+5 << endl;
+   vector<int> vec = {1,2,6,8,9,2,5};
+   for(auto it = vec.begin(); it!= vec.end();it++){
+     cout << *it << ' ';
    }
    cout << endl;
-   vector<int> arr = {3,4,5,6,9};
-   for(vector<int>::iterator it = arr.begin();it!=arr.end();it++){
-      cout << *it << ",";
-   }
+   const int& pi = 5;
+   auto y = pi;
+   cout << y+1 << endl;
+   const auto& j = pi;
+   j++; // appearing error
 }
