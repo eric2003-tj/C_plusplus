@@ -5,12 +5,37 @@
 using namespace std;
 using namespace std::literals;
 int main(){
-   // Iterator Ranges and Arithmetic
-   string str{"12345"};
-   auto start = str.begin();
-   cout << *next(start) << endl;
-   auto last = str.end()-1;
-   cout << *last << endl;
-   auto mid = start+ distance(start,last)/2;
-   cout << *mid;
+   // Initializer in if Statement
+   vector<int> vec = {1,2,3,4,5};
+   if(auto v = vec.begin();*v!=2){
+      cout << "The first is not 2"<<endl;
+   }
+   // Initializer in Switch Statement
+   vector<string> vecstr = {"abcde","fghjk"};
+   for(auto v = vecstr.begin();v!=vecstr.end();v++){
+      switch(auto x = (*v).begin();*x){
+    case 'a':
+        cout<<"hello"<<endl;
+        break;
+    default:
+        cout << "error"<<endl;
+        break;
+
+      }
+   }
+   //fallthrough
+   int a{2};
+   switch(a){
+ case 1:
+    [[fallthrough]];
+ case 2:
+    [[fallthrough]];
+ case 15:
+    cout<<15<<endl;
+    break;
+ default:
+    cout << "mmm" << endl;
+    break;
+   }
+
 }
