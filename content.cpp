@@ -4,13 +4,16 @@
 #include <cstdint>
 using namespace std;
 using namespace std::literals;
-
+void print(char *str){
+   cout << str << endl;
+   return ;
+}
 int main(){
-   // String literals
-   cout << "Hello"s + " world"s << endl;
-   // Raw string
-   string url = R"(<a href="file">C:\Program Files\</a>\n)";
-   cout << url << endl;
-   string url2 = R"x(<a href="file">C:\Program Files (x86)\</a>\n)x";
-   cout << url2 << endl;
+   // casting
+   // static-cast dynamic-cast reinterpret-cast const-cast
+   int a = 65;
+   cout << static_cast<char>(a) << endl;
+   const char* url = R"(https://www.udemy.com/course/learn-intermediate-modern-c/learn/lecture/29453340#questions)";
+   print(const_cast<char*>(url));
+
 }
