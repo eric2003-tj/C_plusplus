@@ -3,76 +3,19 @@
 #include <string>
 #include <cstdint>
 using namespace std;
-using namespace std::literals;
-// Writing a template
-template<class T>
-T Max(const T& a,const T& b){
-  if(a > b){
-     return a;
-  }
-  return b;
+void func(int a,int b){
+  cout << a << " + " << b << " = " << a+b;
+  return ;
 }
-template<class T>
-class Tmems{
-  private:
-      T data;
-  public:
-      Tmems(T new_data){
-        data = new_data;
-      }
-      void get_data(){
-        cout << data << endl;
-      }
-};
-namespace abc{
-  vector<int> vec{1,2,3};
-  string str{"abcd"};
-  class Yumn{
-private:
-    int x;
-public:
-    Yumn(int new_x){
-      x = new_x;
-    }
-    void get_data(){
-      cout << x << endl;
-    }
-  };
+using pfunc = void(*)(int,int);
+pfunc other_func(){
+   return &func;
 }
-namespace def{
-  vector<int> vec{1,2,3};
-  string str{"abcd"};
-  class Yumn{
-private:
-    int x;
-public:
-    Yumn(int new_x){
-      x = new_x;
-    }
-    void get_data(){
-      cout << x << endl;
-    }
-  };
-}
-using def::Yumn;
 int main(){
-   cout << Max(4.3,2.0) << endl;
-   /*
-     double Max(const double &a ,const double &b){
-        if(a > b){
-     return a;
-          }
-          return b;
-     }
-   */
-   Tmems<string> item1{"Hello"};
-   item1.get_data();
-   vector vec = {1,2,3}; // for C++ 17
-   for(auto it:vec){
-      cout << it << ",";
-   }
-   cout << abc::str << endl;
-   Yumn ob{6};
-   ob.get_data();
-
+   int a{5};
+   int b{3};
+   auto fun_ptr = &func;
+   (*fun_ptr)(a,b);
+   cout << endl;
+   (*other_func())(a,b);
 }
