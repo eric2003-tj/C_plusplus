@@ -4,38 +4,41 @@
 #include <cstdint>
 using namespace std;
 using namespace std::literals;
-int main(){
-   // Initializer in if Statement
-   vector<int> vec = {1,2,3,4,5};
-   if(auto v = vec.begin();*v!=2){
-      cout << "The first is not 2"<<endl;
-   }
-   // Initializer in Switch Statement
-   vector<string> vecstr = {"abcde","fghjk"};
-   for(auto v = vecstr.begin();v!=vecstr.end();v++){
-      switch(auto x = (*v).begin();*x){
-    case 'a':
-        cout<<"hello"<<endl;
-        break;
-    default:
-        cout << "error"<<endl;
-        break;
-
+// Writing a template
+template<class T>
+T Max(const T& a,const T& b){
+  if(a > b){
+     return a;
+  }
+  return b;
+}
+template<class T>
+class Tmems{
+  private:
+      T data;
+  public:
+      Tmems(T new_data){
+        data = new_data;
       }
-   }
-   //fallthrough
-   int a{2};
-   switch(a){
- case 1:
-    [[fallthrough]];
- case 2:
-    [[fallthrough]];
- case 15:
-    cout<<15<<endl;
-    break;
- default:
-    cout << "mmm" << endl;
-    break;
+      void get_data(){
+        cout << data << endl;
+      }
+};
+int main(){
+   cout << Max(4.3,2.0) << endl;
+   /*
+     double Max(const double &a ,const double &b){
+        if(a > b){
+     return a;
+          }
+          return b;
+     }
+   */
+   Tmems<string> item1{"Hello"};
+   item1.get_data();
+   vector vec = {1,2,3}; // for C++ 17
+   for(auto it:vec){
+      cout << it << ",";
    }
 
 }
