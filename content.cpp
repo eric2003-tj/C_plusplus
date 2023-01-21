@@ -24,6 +24,37 @@ class Tmems{
         cout << data << endl;
       }
 };
+namespace abc{
+  vector<int> vec{1,2,3};
+  string str{"abcd"};
+  class Yumn{
+private:
+    int x;
+public:
+    Yumn(int new_x){
+      x = new_x;
+    }
+    void get_data(){
+      cout << x << endl;
+    }
+  };
+}
+namespace def{
+  vector<int> vec{1,2,3};
+  string str{"abcd"};
+  class Yumn{
+private:
+    int x;
+public:
+    Yumn(int new_x){
+      x = new_x;
+    }
+    void get_data(){
+      cout << x << endl;
+    }
+  };
+}
+using def::Yumn;
 int main(){
    cout << Max(4.3,2.0) << endl;
    /*
@@ -40,5 +71,8 @@ int main(){
    for(auto it:vec){
       cout << it << ",";
    }
+   cout << abc::str << endl;
+   Yumn ob{6};
+   ob.get_data();
 
 }
