@@ -2,18 +2,18 @@
 #include <vector>
 #include <string>
 #include <cstdint>
+#include <cctype>
 using namespace std;
+void convert(string& str){
+    for(auto it=str.begin();it!=str.end();it++){
+        if(ispunct(*it)){
+            *it = '!';
+        }
+    }
+}
 int main(){
-   #ifdef data()
-      string str{"20202"};
-      cout << str.data() << endl;
-   #endif // data
-   #ifdef swap
-      string str1{"Hello"};
-      string str2{"Goodbye"};
-      str1.swap(str2);
-      cout << str1 << endl;
-      swap(str1,str2);
-      cout << str1 << endl;
-   #endif // swap
+   //assignment 4
+   string str{"To be, or not to be, that is the question:"};
+   convert(str);
+   cout << str;
 }
