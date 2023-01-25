@@ -6,8 +6,12 @@
 #include <fstream>
 using namespace std;
 int main(){
-   char c;
-   while(cin.get(c)){
-      cout.put(c);
-   }
+   const int file_size{10};
+   char buffer[file_size];
+   ifstream ifile{"input.txt"};
+   ifile.read(buffer,file_size);
+   auto nread = ifile.gcount();
+   ifile.close();
+   cout << nread << endl;
+   cout.write(buffer,file_size);
 }
