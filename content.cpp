@@ -7,9 +7,9 @@
 using namespace std;
 int main(){
    ifstream ifile{"text.txt"};
-   while(ifile){
+   if(ifile){
       string text{""};
-      while(ifile >> text){
+      while(getline(ifile,text)){
         cout << text << " ";
       }
    }
