@@ -6,9 +6,11 @@
 #include <fstream>
 using namespace std;
 int main(){
-   ofstream ofile;
-   ofile.open("input.txt",fstream::app);
-   ofile << "\n123456789";
-   ofile.close();
-
+  int x;
+  cin >> x;
+  if(cin.good()){
+    cout << "You successfully entered an integer\n";
+  }else if(cin.fail() || cin.bad()){
+    cout << "Please reenter an integer\n";
+  }
 }
