@@ -6,11 +6,12 @@
 #include <fstream>
 using namespace std;
 int main(){
-   ifstream ifile{"text.txt"};
-   if(ifile){
-      string text{""};
-      while(getline(ifile,text)){
-        cout << text << " ";
-      }
+   ofstream ofile{"text_out.txt"};
+   if(ofile){
+     vector<string> vec = {"dddd","xxxxx","apple"};
+     for(auto v:vec){
+        ofile << v << ",";
+     }
+     ofile.close();
    }
 }
