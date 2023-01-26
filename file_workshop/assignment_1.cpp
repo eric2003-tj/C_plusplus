@@ -2,6 +2,8 @@
 #include <fstream>
 #include <string>
 #include <vector>
+#include <cctype>
+#include <sstream>
 using namespace std;
 struct language {
     string lang;
@@ -9,21 +11,30 @@ struct language {
     int date;
 };
 int main(){
-  ifstream ifile{"languages.txt"};
+  ifstream ifile{"languages2.txt"};
   string text;
-  vector<string> vec;
+  vector<language> vec;
   if(ifile){
-    while(ifile >> text){
-        vec.push_back(text);
+    while(getline(ifile,text)){
+        istringstream iss{text};
+        language temp;
+        iss >> temp.lang;
+        string designer;
+        iss >> designer;
+        string temp2;
+        iss >> temp2;
+        while(!isdigit(temp2[0])){
+            designer += " ";
+            designer += temp2;
+            temp2.assign("");
+            iss >> temp2;
+        }
+        temp.designer = designer;
+        temp.date = stoi(temp2);
+        vec.push_back(temp);
     }
-  }
-  auto beg_pos = vec.begin();
-  for(auto it=vec.begin();it!=vec.end();it++){
-    cout << *it;
-    if((it-beg_pos)%3 == 2){
-        cout << endl;
-    }else{
-        cout << " ,";
+    for(auto v:vec){
+        cout << v.lang << " " << v.designer << " " << v.date << endl;
     }
   }
 }

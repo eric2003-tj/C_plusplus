@@ -1,0 +1,5 @@
+C Kernighan & Ritchie 1970
+C++ Stroustrup 1979
+Java Gosling 1991
+C# Hejlsberg 1999
+Python van Rossum 1991
