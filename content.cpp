@@ -7,26 +7,25 @@
 #include <iterator>
 #include <cstdint>
 using namespace std;
-//#pragma pack(push,1)
-typedef struct{
-  char a;
-  int32_t x;
-  int32_t y;
-}point;
-//#pragma pack(pop)
+class refrigerator {
+    // Data members
+    int temperature{2};
+    bool door_open;
+    bool power_on;
+public:
+    refrigerator(int new_temp,bool dr,bool po){
+       temperature = new_temp;
+       door_open = dr;
+       power_on = po;
+    }
+    void print(){
+       cout << temperature << endl;
+       cout << boolalpha << door_open << endl;
+       cout << power_on << endl;
+    }
+};
+
 int main() {
-    point p{'a',1,2};
-    ofstream of{"file.bin",fstream::binary};
-    if(of.is_open()){
-        of.write(reinterpret_cast<char*>(&p),sizeof(point));
-        of.close();
-    }
-    ifstream ifile{"file.bin",fstream::binary};
-    point p2;
-    if(ifile.is_open()){
-        ifile.read(reinterpret_cast<char*>(&p2),sizeof(point));
-        of.close();
-        cout << ifile.gcount() << endl;
-        cout << p2.x << " " << p2.y << endl;
-    }
+    refrigerator refr(5,true,false);
+    refr.print();
 }
