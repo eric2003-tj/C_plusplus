@@ -5,17 +5,28 @@
 #include <fstream>
 #include <vector>
 #include <iterator>
+#include <cstdint>
 using namespace std;
-
+//#pragma pack(push,1)
+typedef struct{
+  char a;
+  int32_t x;
+  int32_t y;
+}point;
+//#pragma pack(pop)
 int main() {
-    istream_iterator<string> ii(cin);
-    istream_iterator<string> eof;
-    vector<string> vs;
-    while(ii != eof){
-        vs.push_back(*ii);
-        ii++;
+    point p{'a',1,2};
+    ofstream of{"file.bin",fstream::binary};
+    if(of.is_open()){
+        of.write(reinterpret_cast<char*>(&p),sizeof(point));
+        of.close();
     }
-    for(auto v:vs){
-        cout << v << endl;
+    ifstream ifile{"file.bin",fstream::binary};
+    point p2;
+    if(ifile.is_open()){
+        ifile.read(reinterpret_cast<char*>(&p2),sizeof(point));
+        of.close();
+        cout << ifile.gcount() << endl;
+        cout << p2.x << " " << p2.y << endl;
     }
 }
