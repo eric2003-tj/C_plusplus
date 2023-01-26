@@ -8,9 +8,14 @@
 using namespace std;
 
 int main() {
-    ostream_iterator<int> oi(cout,"\n");
-    for(int i=0;i<10;i++){
-        *oi = i;
-        oi++;
+    istream_iterator<string> ii(cin);
+    istream_iterator<string> eof;
+    vector<string> vs;
+    while(ii != eof){
+        vs.push_back(*ii);
+        ii++;
+    }
+    for(auto v:vs){
+        cout << v << endl;
     }
 }
