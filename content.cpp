@@ -2,16 +2,22 @@
 #include <limits>
 #include <iomanip>
 #include <sstream>
+#include <fstream>
+#include <vector>
 using namespace std;
 
 int main() {
-    ostringstream os;
-    cout << "Please enter an word:" << '\n';
+    ifstream ifile("input.txt");
     string text;
-    cin >> text;
-    os << text;
-    cout << "please enter another word: " << endl;
-    cin >> text;
-    os << text;
-    cout << os.str() << endl;
+    vector<int> vec;
+    while(getline(ifile,text)){
+        istringstream in(text);
+        int num;
+        while(in >> num){
+            vec.push_back(num);
+        }
+    }
+    for(auto n:vec){
+        cout << n << endl;
+    }
 }
