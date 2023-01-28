@@ -7,54 +7,37 @@ class String {
 	char *data;          // Array member to store the characters
 	int size;            // The number of elements in the array
 public:
-	// Constructor
-	//shallow copy
-	String(const std::string& s) : size(s.size()) {
+    String(const std::string& s) : size(s.size()) {
 		data = new char[size];              // Allocate the heap memory for the data
 
 
 		for (int i = 0; i < size; ++i)      // Populate the data
 			data[i] = s[i];
 	}
-    //deep copy
-	String(const String& arg) : size(arg.size) {
-		cout << "Calling copy constructor\n";
-		data = new char[size];              // Allocate the heap memory for arg's data
-
-		for (int i = 0; i < size; ++i)      // Populate the memory with arg's data
-			data[i] = arg.data[i];
+	String(const String& args){
+	    size = args.size;
+	    data = new char[size];
+	    for(int i=0;i<size;i++){
+            data[i] = args.data[i];
+	    }
 	}
-
-	// Assignment Operator
-	String& operator =(const String& arg) {
-		cout << "Calling assignment operator\n";
-
-		if (&arg != this) {                    // Check for self-assignment
-			cout << "Reallocating memory\n";
-			delete [] data;                    // Release the original memory
-			data = new char[arg.size];         // Allocate the data member
-
-			size = arg.size;                   // Assign to the size member
-
-			for (int i = 0; i < size; ++i)     // Populate the data
-				data[i] = arg.data[i];
-		}
-
-		return *this;                                  // Return the assigned-to object
-	}
-
-	// Destructor
-	~String() {
-		cout << "Calling destructor" << endl;
-
-		delete [] data;                     // Release the heap memory for the data
-	}
-
+    ~String(){
+       delete[] data;
+    }
+    String& operator=(const String& arg){
+       if(&arg != this){
+          delete[] data;
+          data = new char[arg.size];
+          size = arg.size;
+          for(int i =0;i<size;i++){
+            data[i] = arg.data[i];
+          }
+       }
+    }
 	int length() {
 		return size;
 	}
 };
-
 int main() {
 	String str("1"s);
 
