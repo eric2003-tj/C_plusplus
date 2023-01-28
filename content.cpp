@@ -3,30 +3,31 @@
 
 using namespace std;
 
-class String {
-	string s;
+class Test {
+	int i;
+	string str;
 public:
-	// Constructors
-	String(): s("") {}
-	String(const string& s): s(s) {}
-
-	// Copy constructor
-	String(const String& arg): s(arg.s) {}
-
-	// Assignment Operator
-	String& operator =(const String& arg) {
-		s = arg.s;
-		return *this;
-	}
-
-	void print() { cout << s << endl; }
+	// Test(int i, const string& s) : i(i), str(s) {}
+	// Test() {}
+	// Test(const Test& other) : i(other.i), str(other.str) {}
+	// Test& operator =(const Test& other) { i = other.i; str = other.str; }
+	// ~Test() {}
+	void print() { cout << "i = " << i << ", str = " << str << endl; }
 };
 
 int main() {
-	String w{"world"};
-	String bang{"bang"};
-	bang = w;
-
-	cout << "w = "; w.print();
-	cout << "bang = "; bang.print();
+	Test test;
+	//Test test(5, "Hello"s);
+	cout << "test after default constructor: ";
+	test.print();
+	//Test test2(7, "Goodbye"s);
+	Test test2;
+	cout << "test2 after default constructor: ";
+	test2.print();
+	Test test3 = test;
+	cout << "test3 after copy constructor: ";
+	test3.print();
+	test = test2;
+	cout << "test after assignment operator: ";
+	test.print();
 }
