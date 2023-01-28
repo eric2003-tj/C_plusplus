@@ -7,25 +7,28 @@
 #include <iterator>
 #include <cstdint>
 using namespace std;
-class refrigerator {
-    // Data members
-    int temperature{2};
-    bool door_open;
-    bool power_on;
-public:
-    refrigerator(int new_temp,bool dr,bool po){
-       temperature = new_temp;
-       door_open = dr;
-       power_on = po;
+class Test {
+    public:
+        int i;
+        string str;
+    // Class interface function declarations
+    // Compiler-generated copy constructor
+    // Initializes "this" by copying the argument's i member
+    // and calling std::string's copy constructor for y
+    // Test(const Test& other) : i(other.i), y(other.y) {}
+    Test(int x,string new_str){
+       i = x;
+       str = new_str;
     }
-    void print(){
-       cout << temperature << endl;
-       cout << boolalpha << door_open << endl;
-       cout << power_on << endl;
+    Test(const Test& other){
+       i = other.i;
+       str = other.str;
     }
 };
 
 int main() {
-    refrigerator refr(5,true,false);
-    refr.print();
+    Test nee{5,"hello"};
+    Test trial{nee};
+    cout << trial.i << endl;
+    cout << trial.str << endl;
 }
