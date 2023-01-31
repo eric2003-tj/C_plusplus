@@ -104,3 +104,35 @@ int main() {
 	cout << "hi: "; hi.print();
 }
 ```
+
+## addition
+
+<p>We use complex as an example for overloading, we defined "+=" as a member function of complex, and then defined a global functiom for addition</p>
+
+```
+class Complex {
+private:
+	double real{0.0};
+	double imag{0.0};
+public:
+	Complex(double r, double i): real(r), imag(i) {}
+	Complex(double r): real(r) {}
+
+	// We define the += operator as a member function
+	// This adds the real and imaginary parts separately and returns the modified object
+	Complex& operator +=(const Complex& rhs) {
+		real += rhs.real;                     // Assign new value of real member
+		imag += rhs.imag;                     // Assign new value of imag member
+		return *this;                         // Return modified object by value
+	}
+	void print() {
+		cout << "(" << real << ", " << imag << ")" << endl;
+	}
+};
+
+Complex operator + (const Complex& lhs, const Complex& rhs) {
+	Complex temp{lhs};                       // Make a copy of the lhs argument
+	temp += rhs;                              // Add the rhs argument to it
+	return temp;                              // Return the modified copy of the lhs argument
+}
+```
