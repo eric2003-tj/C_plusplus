@@ -9,9 +9,10 @@ class Test{
        Test(int d){
            i = d;
        }
-       operator int() const{return i;}
+       explicit operator int() const{return i;}
 };
 int main(){
    Test ob{7};
-   cout << ob << endl;
+   //cout << ob << endl;
+   cout << static_cast<int>(ob) << endl;
 }
