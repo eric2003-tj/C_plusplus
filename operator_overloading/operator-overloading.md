@@ -167,3 +167,64 @@ bool operator <(const student& lhs, const student& rhs) {
 	return (lhs.name < rhs.name);               // Order by name (alphabetical sort)
 }
 ```
+
+## func pointer
+
+```
+#include <iostream>
+#include <vector>
+#include <string>
+#include <cstdint>
+using namespace std;
+void func(int a,int b){
+  cout << a << " + " << b << " = " << a+b;
+  return ;
+}
+using pfunc = void(*)(int,int);
+pfunc other_func(){
+   return &func;
+}
+int main(){
+   int a{5};
+   int b{3};
+   auto fun_ptr = &func; // making a pointer point to func
+   (*fun_ptr)(a,b);
+   cout << endl;
+   (*other_func())(a,b);
+}
+```
+
+## function overload
+
+```
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+class evenp {
+public:
+	bool operator() (int n) {
+		return (n % 2 == 0);
+	}
+};
+
+void do_it(const vector<int>& vec, evenp is_even) {
+	for (auto v: vec)
+		if (is_even(v))
+			cout << v << " is even\n";
+}
+
+int main() {
+	evenp is_even;                               // Create a functor object
+
+	vector<int> numbers{1, 4, 7, 11, 12, 23, 36}; // Vector of numbers
+
+	cout << "Vector: ";
+	for (auto number : numbers)
+		cout << number << ", ";
+	cout << endl;
+
+	do_it(numbers, is_even);                 // Pass functor as argument to a function call
+}
+```
