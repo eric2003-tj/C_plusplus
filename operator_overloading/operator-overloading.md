@@ -136,3 +136,34 @@ Complex operator + (const Complex& lhs, const Complex& rhs) {
 	return temp;                              // Return the modified copy of the lhs argument
 }
 ```
+
+## comparison
+
+<p>Based on mathematics, if we defined less than operator  and equal operator, then we can do every comparison</p>
+
+```
+class student {
+    std::string name;                  // Student's name - not necessarily unique
+    int id;                            // Student's ID number - unique to each student
+public:
+	student(std::string name, int id) : name(name), id(id) {}
+	friend bool operator ==(const student& lhs, const student& rhs);
+	friend bool operator !=(const student& lhs, const student& rhs);
+	friend bool operator <(const student& lhs, const student& rhs);
+	void print();
+};
+--------------------------
+bool operator ==(const student& lhs, const student& rhs) {
+	if (lhs.name == rhs.name) {
+		return true;
+	}
+	return false;
+}
+bool operator !=(const student& lhs, const student& rhs) {
+	return !(lhs == rhs);
+}
+
+bool operator <(const student& lhs, const student& rhs) {
+	return (lhs.name < rhs.name);               // Order by name (alphabetical sort)
+}
+```
