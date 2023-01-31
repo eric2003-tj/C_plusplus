@@ -4,15 +4,13 @@
 #include <cstdint>
 using namespace std;
 class Test{
-   int i;
    public:
-       Test(int d){
-           i = d;
-       }
-       explicit operator int() const{return i;}
+       Test() = default;
+       Test(const Test&) = delete;                    // Deleted copy constructor
+       Test& operator =(const Test&) = delete;        // Deleted assignment operator
 };
 int main(){
-   Test ob{7};
-   //cout << ob << endl;
-   cout << static_cast<int>(ob) << endl;
+    Test t1, t2;                                   // Use defaulted constructor
+	Test t3(t1);                                   // Error: use of deleted function
+	t2 = t1;
 }
