@@ -268,6 +268,47 @@ cannot be modified by the lambda</li>
 ### lambda with this
 <p>When "this" is used, it represents capturing by ref of the object. If we wanna capture by value, we need to use "*this".</p>
 
+### partial evaluation
+```
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+// Function which returns a lambda function
+auto greeter(const string& salutation) {
+	return [salutation](const string& name) { return salutation + ", "s + name; };       // The lambda function
+}
+
+int main() {
+	// Store the lambda function in a variable
+	auto greet = greeter("Hello"s);
+
+	// Call the lambda function
+	cout << "Greeting: " << greet("James") << endl;
+	cout << "Greeting: " << greet("students") << endl;
+
+	auto greet_formal = greeter("Good morning"s);
+
+	// Call the lambda function
+	cout << "Formal greeting: " << greet_formal("Dr Stroustrup") << endl;
+}
+```
+
+### lambda generalize
+
+```
+#include <iostream>
+
+using namespace std;
+
+int main() {
+	auto add_two = [y=2] (int x) { return x + y; };                 // y is local to the lambda body
+	cout << "Calling add_two(2) gives " << add_two(2) << endl;
+	cout << "Calling add_two(5) gives " << add_two(5) << endl;
+}
+```
+
 ## equal
 
 <p>We can check whether two containers are the same using equal()</p>

@@ -5,9 +5,10 @@
 #include <algorithm>
 using namespace std;
 int main(){
-    vector<string> vec = {"assd","bhhsdf","dfdfdd"};
-    int max{5};
-    int idx{-1};
-    auto res = find_if(cbegin(vec),cend(vec),[max,&idx](const string& str){++idx; return str.size() > max;});
-    cout << idx << endl;
+    int x{42}, y{99}, z{0};
+    auto lam = [=,&z]() mutable { ++x; ++y; z = x + y; };
+    lam();
+    cout << x << " " << y << " " << z << endl;
+    lam();
+    cout << x << " " << y << " " << z;
 }
