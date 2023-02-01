@@ -249,6 +249,25 @@ int main(){
 }
 ```
 
+### implicit capture
+
+<p>In an implicit capture, all variables in scope are captured by the lambda
+expression</p>
+
+<ul>
+   <li>[=] for implicit capture by value</li>
+   <li>[&] for implicit capture by reference</li>
+   <li>We can exclude some variables from implicit capture.[=, &x] will capture x by reference, all others by value. Only x can be modified
+by the lambda</li>
+<li>[&, =a, =b] will capture a and b by value, all others by reference. a and b
+cannot be modified by the lambda</li>
+</ul>
+
+<p>Please notice that "mutable" does not needed when capturing by ref.</p>
+
+### lambda with this
+<p>When "this" is used, it represents capturing by ref of the object. If we wanna capture by value, we need to use "*this".</p>
+
 ## equal
 
 <p>We can check whether two containers are the same using equal()</p>
