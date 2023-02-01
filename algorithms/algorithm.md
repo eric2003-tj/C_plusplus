@@ -154,6 +154,82 @@ int main(){
     }
 }
 ```
+## some important features about lambda expressions
+
+<p>By default, lambda expression has very limited access to variables. It only has access to non-local variables.</p>
+
+```
+// demo
+#include <iostream>
+
+using namespace std;
+
+int global{99};                                  // Non-local variable
+
+int main() {                                     // Scope containing the lambda expression
+	static int answer{42};                       // Static variable in containing scope
+	const int one{1};                            // Local variable in containing scope
+	const int& r_one{one};                       // Local variable in containing scope
+	
+	[]() {                                       // Start of lambda body
+		cout << global << endl;                  // Lambda body can access non-local variables
+		cout << answer << endl;                  // Lambda body can access static variables
+		// Does not compile with Visual C++
+		//cout << one << endl;                   // Lambda body can read local variables, provided...
+		// Does not compile with Visual C++, gcc or clang
+		//cout << r_one << endl;                 // Lambda body can read local variables, provided...
+	};                                           // End of lambda body
+}                 
+```
+
+<p>If we want it to have access to local variables, we need to add the variable name in the []</p>
+
+```
+//demo
+#include <iostream>
+#include <vector>
+#include <string>
+#include <algorithm>
+
+using namespace std;
+
+int main() {
+	vector<string> words{ "a", "collection", "of", "words", "with", "varying", "lengths" };
+
+	int n{5};
+	// Find the first element with more than 5 characters
+	auto res = find_if(cbegin(words), cend(words), 
+				[n] (const string& str) { return str.size() > n; }         // Lambda captures local variable n
+	);
+
+	// Display it
+	if (res != cend(words)) {
+		cout << R"(The first word which is more than )" << n << R"( letters long is ")";
+		cout << *res << R"(")" << endl;
+	}
+}
+```
+
+<p>However, by default, the local variable passed into lambda expression is const, if we wanna change it, we should add a keyword "mutable"</p>
+
+```
+// demo
+int main() {
+	vector<string> words{ "a", "collection", "of", "words", "with", "varying", "lengths" };
+
+	int n{5}, idx{-1};                                // Add another variable for the index of the match
+	auto res = find_if(cbegin(words), cend(words),
+//					[n, idx] (const string& str) { ++idx; return str.size() > n; }              // Error!
+					[n, idx] (const string& str) mutable { ++idx; return str.size() > n; }      // OK
+	 );
+
+	if (res != cend(words)) {
+		cout << R"(The first word which is more than )" << n << R"( letters long is ")";
+		cout << *res << R"(")" << endl;
+		cout << "The index is " << idx << endl;                // Always prints zero
+	}
+}
+```
 
 ## equal
 
