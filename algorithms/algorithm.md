@@ -138,4 +138,31 @@ int main() {
 }
 ```
 
+## lambda
+
+```
+#include <iostream>
+#include <algorithm>
+#include <vector>
+
+using namespace std;
+int main(){
+    vector<int> vec = {4,9,6,3,1,2};
+    sort(begin(vec),end(vec),[](int lhs,int rhs){return (rhs<lhs);});
+    for(auto n:vec){
+        cout << n << ",";
+    }
+}
+```
+
+## equal
+
+<p>We can check whether two containers are the same using equal()</p>
+
+```
+// using string as an example
+equal(cbegin(lhs), cend(lhs), cbegin(rhs), cend(rhs),
+               		           [] (char lc, char rc) { return toupper(lc) == toupper(rc); }
+```
+
 
