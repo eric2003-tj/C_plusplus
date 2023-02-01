@@ -231,6 +231,24 @@ int main() {
 }
 ```
 
+<p>In above examples, lambda captures variables by value, and that is to say, the real value of the local variable is never changed. In order to change the value, we can let lambda capture it by reference.</p>
+
+```
+#include <iostream>
+#include <vector>
+#include <string>
+#include <cstdint>
+#include <algorithm>
+using namespace std;
+int main(){
+    vector<string> vec = {"assd","bhhsdf","dfdfdd"};
+    int max{5};
+    int idx{-1};
+    auto res = find_if(cbegin(vec),cend(vec),[max,&idx](const string& str){++idx; return str.size() > max;});
+    cout << idx << endl;
+}
+```
+
 ## equal
 
 <p>We can check whether two containers are the same using equal()</p>

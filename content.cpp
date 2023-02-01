@@ -2,16 +2,12 @@
 #include <vector>
 #include <string>
 #include <cstdint>
+#include <algorithm>
 using namespace std;
-class Test{
-   public:
-       bool operator()(int n){
-          return (n%3==0);
-       }
-};
 int main(){
-    Test t;
-    if(t(3)){
-        cout << "ff";
-    }
+    vector<string> vec = {"assd","bhhsdf","dfdfdd"};
+    int max{5};
+    int idx{-1};
+    auto res = find_if(cbegin(vec),cend(vec),[max,&idx](const string& str){++idx; return str.size() > max;});
+    cout << idx << endl;
 }
