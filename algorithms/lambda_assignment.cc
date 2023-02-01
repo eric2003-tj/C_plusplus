@@ -11,8 +11,8 @@ class is_smaller{
 };
 int main(){
     vector<int> vec = {4,9,6,3,1,2};
-    sort(begin(vec),end(vec),is_smaller());
+    sort(begin(vec),end(vec),[](int lhs,int rhs){return (rhs<lhs);});
     for(auto n:vec){
-        cout << n << endl;
+        cout << n << ",";
     }
 }
