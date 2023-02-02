@@ -331,3 +331,96 @@ pair wordpair{"hello"s, "there"s};                         // C++17 CTAD
 
 ```
 
+## insert iterator
+
+<p>We can use insert iterator to implement insert an element in the every position of the container.</p>
+
+1. back_insert
+```
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+int main() {
+	vector<int> vec;                        // Create an empty vector
+
+	cout << "Vector has " << vec.size() << " elements\n";
+	
+	cout << "Calling back_inserter()\n";
+	auto it = back_inserter(vec);           // Get an insert iterator for vec
+
+	// Assign to this iterator
+	cout << "Assigning to insert iterator\n";
+	*it = 99;                               // Calls vec.push_back(99)
+	*it = 88;                               // Calls vec.push_back(88)
+
+	// Vector elements are now {99, 88}
+	cout << "Vector has " << vec.size() << " elements: ";
+	
+	for (auto v: vec)
+		cout << v << ", ";
+	cout << endl;
+}
+```
+2. insert()
+```
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+int main() {
+	vector<int> vec = {1, 2, 3};                  // Create a vector
+
+	// Print out vector elements
+	cout << "Vector: ";
+	for (auto v: vec)
+		cout << v << ", ";
+	cout << endl;
+	
+	auto el2 = next(begin(vec));                  // Get an iterator to the second element
+	
+	auto it = inserter(vec, el2);                 // Get an insert iterator for vec
+
+	// Assign to this iterator
+	*it = 99;                                     // Calls vec.insert(el2, 99)
+	
+	// vec  now contains {1, 99, 2, 3}
+
+	// Print out vector elements
+	cout << "Vector after insert: ";
+	for (auto v: vec)
+		cout << v << ", ";
+	cout << endl;
+}
+```
+3. with istream_iterator
+```
+#include <iostream>
+#include <vector>
+#include <iterator>
+
+using namespace std;
+
+int main() {
+	cout << "Enter some words:" << endl;
+	
+	istream_iterator<string> iis(cin);            // Iterator to read strings
+	istream_iterator<string> eof;                 // Empty iterator
+
+	vector<string> vec;                           // Vector to store input
+	auto it = back_inserter(vec);
+
+	while (iis != eof) {                          // Do we have any input to read?
+		it = *iis;                                // Yes - store it in the vector
+		++iis;                                    // Move to next input
+	}
+
+	cout << "You entered " << vec.size() << " words: ";
+	for (auto v: vec)
+	    cout << v << ", ";
+	cout << endl;
+}
+```
+
