@@ -141,3 +141,64 @@ second range are present in the first range</p>
 ```
 includes(cbegin(str), cend(str), cbegin(vowels), cend(vowels));
 ```
+
+## numeric algorithms
+
+<p>Since some of the algorithms about number are not defined in the <algorithms>, we should use <numeric></p>
+
+### iota
+
+```
+iota(begin(vec), end(vec), 1);                  // Populate the vector elements as 1, 2, 3, 4, ...
+```
+
+### accumulate
+
+```
+auto sum = accumulate(cbegin(vec), cend(vec), 0);           // Returns the sum of the elements
+auto sum = accumulate(cbegin(vec), cend(vec), 0,
+		[] (int sum, int n) {  return (n % 2 == 1) ? sum + n : sum; }
+	);
+```
+
+### reduce
+
+```
+auto sum = reduce(begin(vec), end(vec), 0);           // Sum elements of vec using initial value 0
+```
+
+## write-only algorithms
+
+### fill 
+
+```
+fill(begin(vec), end(vec), 42);                   // Assign 42 to all its elements
+```
+
+### fill_n
+
+```
+auto begin_rest = fill_n(begin(vec), 5, 42);
+```
+
+### generate()
+
+```
+class square {
+  private:
+    int n{0};
+  public:
+    int operator()() { ++n; return n * n; }
+};
+
+int main() {
+	vector<int> vec(10);                                 // Vector with 10 elements
+	generate(begin(vec), end(vec), square());  
+}          // Populate it with the first 10 squares
+```
+
+### generate_n()
+
+```
+generate_n(back_inserter(vec), 10, square()); 
+```
