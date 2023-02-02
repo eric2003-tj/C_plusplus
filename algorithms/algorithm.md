@@ -319,4 +319,15 @@ equal(cbegin(lhs), cend(lhs), cbegin(rhs), cend(rhs),
                		           [] (char lc, char rc) { return toupper(lc) == toupper(rc); }
 ```
 
+## pair
+
+<p> pair is a data structure that contains two datas, first and second. In addition, the most important feature of this data structure is that all of its members are public.</p>
+
+```
+// declare
+pair<string, string> wordpair{"hello", "there"};
+auto wordpair { make_pair("hello", "there") };
+pair wordpair{"hello"s, "there"s};                         // C++17 CTAD
+
+```
 

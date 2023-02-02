@@ -5,8 +5,7 @@
 #include <algorithm>
 using namespace std;
 int main(){
-   int y = 1;
-   auto func = [y = y+1](int x) { return x + y; };
-    cout << func(5) << endl;
-    cout << y<< endl;
+   pair<string,int> x{"Hello"s,150};
+   cout << x.first << endl;
+   cout << x.second << endl;
 }
