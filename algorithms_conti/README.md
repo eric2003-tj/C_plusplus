@@ -87,3 +87,19 @@ int main() {
 	cout << "Final contents of str:   " << str << endl;
 }
 ```
+
+### adjacent_find
+```
+ auto pos = adjacent_find(cbegin(str),cend(str));
+```
+
+### search_n
+```
+ auto pos2 = search_n(cbegin(vec),cend(vec),4,3);
+```
+
+### search 
+
+```
+auto pos3 = search(cbegin(str),cend(str),cbegin(temp),cend(temp));
+```
