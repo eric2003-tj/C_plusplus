@@ -103,3 +103,41 @@ int main() {
 ```
 auto pos3 = search(cbegin(str),cend(str),cbegin(temp),cend(temp));
 ```
+
+### mismatch
+
+<p>mismatch() takes two iterator ranges and looks for differences between the two ranges. It returns a pair to the first element that has a different value in each range</p>
+
+```
+vector<int> vec1{1, 2, 2, 3, 2, 3, 3};
+vector<int> vec2{1, 2, 2, 2, 2, 3, 3}; 
+auto enem = mismatch(cbegin(vec1),cend(vec1),cbegin(vec2),cend(vec2));
+```
+
+### some_of method
+
+<ol>
+   <li>all_of() returns true if the predicate is true for every element</li>
+   <li>any_of() returns true if the predicate is true for at least one element</li>
+   <li>none_of() returns true if the predicate is false for every element</li>
+</ol>
+
+```
+  none_of(cbegin(vec), cend(vec), is_odd);
+  any_of(cbegin(vec), cend(vec), is_odd);
+  all_of(cbegin(vec), cend(vec), is_odd); //is_odd is a lambda expression
+```
+
+### binary_search
+
+```
+binary_search(cbegin(vec), cend(vec), 4);
+```
+
+### includes
+<p>includes() returns a bool, depending on whether all the elements in the
+second range are present in the first range</p>
+
+```
+includes(cbegin(str), cend(str), cbegin(vowels), cend(vowels));
+```
