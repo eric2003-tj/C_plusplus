@@ -202,3 +202,15 @@ int main() {
 ```
 generate_n(back_inserter(vec), 10, square()); 
 ```
+
+### for_each()
+
+```
+for_each(begin(str), end(str), 
+			[](char& c) { c = toupper(c); }
+	);
+/*
+for (auto& c: str2)
+		 c = toupper(c);
+*/
+```
