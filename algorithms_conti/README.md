@@ -357,3 +357,36 @@ set_intersection(cbegin(vec1), cend(vec1), cbegin(vec2), cend(vec2), back_insert
 ```
 set_union(cbegin(vec1), cend(vec1), cbegin(vec2), cend(vec2), back_inserter(vec3));
 ```
+	
+### reverse() and reverse_copy()
+
+```
+	vector<int> vec1 = {1,3,4};
+	vector<int> vec2(vec1.size());
+	reverse(begin(vec1),end(vec1));
+	reverse_copy(cbegin(vec1),cend(vec1),back_inserter(vec2));
+```
+### rotate() and rotate_copy()
+	
+```
+	int main() {
+	vector<int> vec {1, 2, 3, 4, 5};
+	
+	cout << "Initial vector: ";
+	print(vec);
+	
+	// Use the third element as the pivot
+	auto pivot = begin(vec);
+	advance(pivot, 2);
+	
+	// Perform the rotation
+	auto res = rotate(begin(vec), pivot, end(vec));
+	
+	cout << "Result of rotate: ";
+	print(vec);
+	
+	// res is an iterator to the element with value 1
+	cout << "The original first element was " << *res << endl;
+}
+	// rotate_copy is similar
+```
