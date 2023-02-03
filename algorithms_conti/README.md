@@ -335,3 +335,25 @@ transform(cbegin(vec1), cend(vec1), back_inserter(vec2),
 transform(begin(lhs_copy), end(lhs_copy), begin(lhs_copy), ::toupper);
 transform(begin(rhs_copy), end(rhs_copy), begin(rhs_copy), ::toupper);
 ```
+
+### merge()
+```
+vector<int> vec1 = {1,3,2,4};
+vector<int> vec2 = {1,5,6,9};
+sort(begin(vec1),end(vec1));
+sort(begin(vec2),end(vec2));
+vector<int> vec3;
+	// Merge elements from vec1 and vec2 into vec3'
+merge(cbegin(vec1), cend(vec1), cbegin(vec2), cend(vec2), back_inserter(vec3));
+```
+
+### set_intersection()
+```
+set_intersection(cbegin(vec1), cend(vec1), cbegin(vec2), cend(vec2), back_inserter(vec3));
+```
+
+### set_union()
+
+```
+set_union(cbegin(vec1), cend(vec1), cbegin(vec2), cend(vec2), back_inserter(vec3));
+```
