@@ -214,3 +214,47 @@ for (auto& c: str2)
 		 c = toupper(c);
 */
 ```
+
+### copy()
+
+```
+copy(cbegin(vec), cend(vec), begin(vec2));
+```
+
+### copy_n()
+
+```
+copy_n(cbegin(vec),cend(vec),2,begin(vec2));
+```
+
+### copy_if()
+
+```
+copy_if(cbegin(vec),cend(vec),begin(vec2),lambda_expression);
+```
+
+### replace()
+
+```
+replace(begin(vec),end(vec),1,2); // replace 1 with 2
+```
+
+### replace_if()
+
+```
+replace_if(begin(vec),end(vec),[](int n){return (n%2==0);},2);
+```
+
+### replace_copy()
+
+```
+replace_copy(cbegin(vec1), cend(vec1), back_inserter(vec2), 1, 2);
+```
+
+### replace_copy_if()
+
+```
+replace_copy_if(cbegin(vec1), cend(vec1), back_inserter(vec2),
+                         [] (int n) { return (n % 2 == 0); },
+                         6);
+```
