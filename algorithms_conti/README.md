@@ -264,3 +264,49 @@ replace_copy_if(cbegin(vec1), cend(vec1), back_inserter(vec2),
 auto defunct = remove(begin(vec),end(vec),1);  // put 1 in the back of the vec and return the first "1"'s address
 vec.erase(defunct,end(vec));
 ```
+
+### remove_if()
+
+```
+auto defunct = remove_if(begin(vec),end(vec),[](int n){return (n%2==0);});
+vec.erase(defunct,end(vec));
+```
+
+### remove_copy()
+
+```
+auto defunct = remove_copy(begin(vec),end(vec),begin(vec2),1);
+vec2.erase(defunct,end(vec2));
+```
+
+### remove_copy_if()
+
+```
+ auto defunct = remove_copy_if(begin(vec),end(vec),begin(vec2),[](int n){return (n%2==0);});
+ vec2.erase(defunct,end(vec2));
+```
+
+### unique()
+
+<p>Notice that unique() only deals with adjacent elements of the container</p>
+
+```
+    auto defunct = unique(begin(vec), end(vec));
+	
+	cout << "Before calling erase, the vector has " << vec.size() << " elements\n";
+	vec.erase(defunct, end(vec));
+	
+	cout << "After calling erase, the vector has " << vec.size() << " elements\n";
+	
+	for (auto v : vec)
+		cout << v << ", ";
+	
+```
+
+### unique_copy()
+
+```
+unique_copy(cbegin(vec), cend(vec), back_inserter(vec2), 
+						[] (int m, int n) { return (n == m + 1); }
+);
+```
