@@ -258,3 +258,9 @@ replace_copy_if(cbegin(vec1), cend(vec1), back_inserter(vec2),
                          [] (int n) { return (n % 2 == 0); },
                          6);
 ```
+
+### remove() and erase()
+```
+auto defunct = remove(begin(vec),end(vec),1);  // put 1 in the back of the vec and return the first "1"'s address
+vec.erase(defunct,end(vec));
+```
