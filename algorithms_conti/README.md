@@ -310,3 +310,28 @@ unique_copy(cbegin(vec), cend(vec), back_inserter(vec2),
 						[] (int m, int n) { return (n == m + 1); }
 );
 ```
+
+### transform()
+
+```
+transform(cbegin(vec),cend(vec),begin(vec2),[](int n){return n*2;});
+```
+
+```
+// inplace
+transform(begin(vec), end(vec), begin(vec),
+		[](int n) { return 2*n; }
+	);
+```
+
+```
+// overload
+transform(cbegin(vec1), cend(vec1), back_inserter(vec2),
+        	       	      [] (int n) { return 2*n; }
+	);
+```
+
+```
+transform(begin(lhs_copy), end(lhs_copy), begin(lhs_copy), ::toupper);
+transform(begin(rhs_copy), end(rhs_copy), begin(rhs_copy), ::toupper);
+```
