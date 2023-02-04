@@ -390,3 +390,12 @@ set_union(cbegin(vec1), cend(vec1), cbegin(vec2), cend(vec2), back_inserter(vec3
 }
 	// rotate_copy is similar
 ```
+
+### partition() and stable_partition()
+
+```
+partition(begin(vec), end(vec), [](int n) {return n % 2 == 1;});
+stable_partition(begin(vec), end(vec), [](int n) {return n % 2 == 1;}); // keep the order of the original container
+bool d = is_partitioned(cbegin(vec), cend(vec), is_odd);
+auto ppoint = partition_point(cbegin(vec), cend(vec), is_odd); // return an iterator
+```
