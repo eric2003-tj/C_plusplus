@@ -411,3 +411,25 @@ stable_sort(begin(vec), end(vec), [](int m, int n) { return m > n; });
 is_sorted(cbegin(vec), cend(vec)); // return a boolean
 auto el = is_sorted_until(cbegin(vec), cend(vec)); // return an iterator
 ```
+
+### partial_sort()
+
+```
+auto it = begin(keys);
+partial_sort(it, it + 5, end(keys));
+```
+### partial_sort_copy()
+
+```
+string keys {"qwertyuiopasdfghjkl"};
+string dest(5, ' ');
+	
+cout << "keys: " << keys << endl << endl;
+partial_sort_copy(cbegin(keys), cend(keys), begin(dest), end(dest)); // depending on the size of the destination
+```
+
+### nth_element()
+
+```
+nth_element(begin(vec), mid, end(vec));
+```
