@@ -399,3 +399,15 @@ stable_partition(begin(vec), end(vec), [](int n) {return n % 2 == 1;}); // keep 
 bool d = is_partitioned(cbegin(vec), cend(vec), is_odd);
 auto ppoint = partition_point(cbegin(vec), cend(vec), is_odd); // return an iterator
 ```
+
+### sort(), is_sorted(), stable_sorted(), is_sorted_until
+
+```
+vector<int> vec{1, 4, 5, 6, 2, 7, 5};
+sort(begin(vec), end(vec),
+                 [](int m, int n) { return m > n; }
+	);
+stable_sort(begin(vec), end(vec), [](int m, int n) { return m > n; }); 
+is_sorted(cbegin(vec), cend(vec)); // return a boolean
+auto el = is_sorted_until(cbegin(vec), cend(vec)); // return an iterator
+```
