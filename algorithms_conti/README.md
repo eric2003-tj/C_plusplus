@@ -433,3 +433,20 @@ partial_sort_copy(cbegin(keys), cend(keys), begin(dest), end(dest)); // dependin
 ```
 nth_element(begin(vec), mid, end(vec));
 ```
+
+### next_permutation()
+
+```
+string str{"abc"}; // needed to be ascending order
+do{
+  cout << str << endl;
+  }while(next_permutation(begin(str),end(str));
+
+```
+
+### prev_permutation()
+<p> Same as above codes but needed to be descending order.</p>
+
+### is_permutation()
+
+<p>Return whether they have same permutation</p>
