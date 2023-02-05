@@ -8,4 +8,5 @@
    <li><a href="https://github.com/eric2003-tj/C_plusplus/tree/main/class">class</a></li>
    <li><a href = "https://github.com/eric2003-tj/C_plusplus/tree/main/operator_overloading">operator_overloading</a></li>
    <li><a href = "https://github.com/eric2003-tj/C_plusplus/tree/main/algorithms">algorithms</a></li>
+   <li><a href = "https://github.com/eric2003-tj/C_plusplus/tree/main/algorithms_conti">algo_conti</a></li>
 </ol>
