@@ -450,3 +450,10 @@ do{
 ### is_permutation()
 
 <p>Return whether they have same permutation</p>
+
+### partial_sum()
+
+```
+vector<int> vec1 = {1,2,3,4,5};
+vector<int> vec2;
+partial_sum(cbegin(vec1)
