@@ -456,4 +456,5 @@ do{
 ```
 vector<int> vec1 = {1,2,3,4,5};
 vector<int> vec2;
-partial_sum(cbegin(vec1)
+partial_sum(cbegin(vec1),cend(vec1),back_inserter(vec2));
+```
