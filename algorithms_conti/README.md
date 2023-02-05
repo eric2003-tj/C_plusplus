@@ -674,3 +674,86 @@ int main() {
 	cout << endl;
 }
 ```
+
+## algorithms with random numbers
+
+### shuffle
+
+```
+#include <iostream>
+#include <algorithm>
+#include <vector>
+#include <random>
+
+using namespace std;
+
+int main() {
+	vector<int> vec {3, 1, 4, 1, 5, 9};
+	static mt19937 mt;
+	
+	cout << "Vector before shuffling\n";
+	for (auto v : vec)
+		cout << v << ", ";
+	
+	shuffle(begin(vec), end(vec), mt);
+	
+	cout << "\nVector after shuffling\n";
+	for (auto v : vec)
+		cout << v << ", ";
+	cout << endl;
+}
+```
+
+implementation
+
+```
+#include <iostream>
+#include <algorithm>
+#include <vector>
+#include <random>
+#include <iterator>
+
+using namespace std;
+
+void print( const vector<int>& vec) {
+	ostream_iterator<int> oi(cout, ", ");
+	copy(vec.begin(), vec.end(), oi);
+}
+
+int main() {
+	vector<int> vec {3, 1, 4, 1, 5, 9};
+	static mt19937 mt;
+	
+	cout << "Vector before shuffling\n";
+	print(vec);
+	
+	uniform_int_distribution<int> uid(0, vec.size()-1);
+	
+	for (int i = 0; i < vec.size(); ++i) {
+		std::swap(vec[i], vec[uid(mt)]);
+	}
+	
+	cout << "\nVector after shuffling\n";
+	print(vec);
+	cout << endl;
+}
+```
+
+### bernouli
+
+```
+#include <iostream>
+#include <random>
+
+using namespace std;
+
+int main() {
+	static mt19937 mt;
+	static bernoulli_distribution bd;
+
+	if (bd(mt))
+		cout << "Your subjects are grateful for your wise and benevolent rule\n";
+	else
+		cout << "The peasants are revolting!\n";
+}
+```
