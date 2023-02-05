@@ -539,3 +539,138 @@ int main() {
 	cout << "Max difference is: " << max_diff << endl;
 }
 ```
+
+## random number in C++(traditional)
+
+### rand()
+
+```
+#include <iostream>
+#include <cstdlib>
+
+using namespace std;
+
+int main() {
+	// Print out a pseudo-random integer
+	cout << "Printing out a random number... ";
+	cout << rand() << endl;
+}
+```
+
+### rand_range
+
+```
+#include <iostream>
+#include <cstdlib>
+
+using namespace std;
+
+int main() {
+	// Print out a pseudo-random floating-point number with value between 0 and 1
+	cout << 1.0*rand()/RAND_MAX << endl;            // Convert the result to double!
+
+	// Print out ten pseudo-random integers with value between 1 and 100
+	for (int i = 0; i < 10; ++i)
+		cout << (99*rand()/RAND_MAX + 1) << endl;
+}
+```
+
+### seed
+
+```
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+int main() {
+	srand(time(0));  // Use current time as seed
+	
+	// Print out a pseudo-random floating-point number with value between 0 and 1
+	cout << 1.0*rand()/RAND_MAX << endl;            // Convert the result to double!
+
+	// Print out ten pseudo-random integers with value between 1 and 100
+	for (int i = 0; i < 10; ++i)
+		cout << (99*rand()/RAND_MAX + 1) << endl;
+}
+```
+
+## random number in modern C++
+
+### engine
+
+```
+#include <iostream>
+#include <random>
+
+using namespace std;
+
+int main() {
+	default_random_engine eng;                        // Create engine object - generates sequence
+
+	cout << "Five random integers:\n";
+	for (int i = 0; i < 5; ++i ) {
+		cout << eng() << ", ";                        // Call the functor to get the next number
+	}
+	cout << endl;
+}
+```
+
+### distribution()
+
+```
+#include <iostream>
+#include <random>
+
+using namespace std;
+
+int main() {
+	random_device rd;                                 // Random device (or maybe not!)   
+	mt19937 mt(rd());                                 // Seed engine with number from random device
+
+	uniform_int_distribution<int> idist(0, 100);      // We want ints in the range 0 to 100
+
+	cout << "Five random integers between 0 and 10:\n";
+	for (int i = 0; i < 5; ++i ) {
+		cout << idist(mt) << ", ";                    // Call the functor to get the next number
+	}
+	cout << endl << endl;
+
+	uniform_real_distribution<double> fdist(0, 1);    // Doubles in the range 0 to 1
+
+	cout << "Five random floating-point numbers between 0 and 10:\n";
+	for (int i = 0; i < 5; ++i ) {
+		cout << fdist(mt) << ", ";
+	}
+	
+	cout << endl;
+}
+```
+
+```
+#include <iostream>
+#include <random>
+
+using namespace std;
+
+int main() {
+	mt19937 mt;                                       // Create engine object - generates sequence
+
+	uniform_int_distribution<int> idist(0, 10);       // We want ints in the range 0 to 100
+
+	cout << "Five random integers between 0 and 10:\n";
+	for (int i = 0; i < 5; ++i ) {
+		cout << idist(mt) << ", ";                    // Call the functor to get the next number
+	}
+	cout << endl << endl;
+
+	uniform_real_distribution<double> fdist(0, 10);    // Doubles in the range 0 to 10
+
+	cout << "Five random floating-point numbers between 0 and 10:\n";
+	for (int i = 0; i < 5; ++i ) {
+		cout << fdist(mt) << ", ";
+	}
+	cout << endl;
+}
+```
