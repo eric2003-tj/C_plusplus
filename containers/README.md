@@ -155,3 +155,47 @@ int main() {
 	cout << endl;
 }
 ```
+
+## operation of list
+
+<p>Some global functions such as "sort()" do not work with list. We should call member function instead. </p>
+
+sort
+```
+list<int> list1 = {4,6,9,1};
+list1.sort();
+```
+
+merge
+```
+list<int> list1{1, 12, 6, 24};
+list<int> list2{9, 3, 14};
+list1.sort();
+list2.sort();
+list1.merge(list2); 
+```
+
+remove
+```
+list<int> l{4, 3, 1};
+l.remove(3);                          // Remove element with value 3
+```
+
+splice
+
+```
+list<int> list1{1, 12, 6, 24};
+list<int> list2{9, 3, 14};
+auto p = begin(list1);
+advance(p, 1);                      // p is an iterator to the second element of list1 (with value 12)
+list1.splice(p, list2);             // Insert elements of list2 before p
+```
+
+splice_after()
+
+```
+forward_list<int> list1{1, 12, 6, 24};
+forward_list<int> list2{9, 3, 14};
+auto p = begin(list1);              // p is an iterator to the first element of list1 (with value 1)
+list1.splice_after(p, list2);       // Insert elements of list2 after p
+```
