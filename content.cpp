@@ -4,9 +4,15 @@
 #include <cstdint>
 #include <algorithm>
 #include <array>
+#include <forward_list>
 using namespace std;
 
 int main(){
-   std::array<int,5> arr = {1,2,3,4,5};
-   cout << "arr[3] is " << arr[3] << endl;
+  forward_list<int> lists{4,3,1};
+  auto second = lists.begin();
+  advance(second,1);
+  lists.insert_after(second,2);
+  for(auto v:lists){
+   cout << v << endl;
+  }
 }
