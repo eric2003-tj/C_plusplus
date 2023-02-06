@@ -199,3 +199,27 @@ forward_list<int> list2{9, 3, 14};
 auto p = begin(list1);              // p is an iterator to the first element of list1 (with value 1)
 list1.splice_after(p, list2);       // Insert elements of list2 after p
 ```
+
+## deque
+
+```
+#include <iostream>
+#include <deque>
+
+using namespace std;
+
+int main() {
+	deque<int> dq;              // Create an empty container
+
+	dq.push_back(5);
+	dq.push_back(1);
+	dq.push_front(3);           // Add element with value 3 before the other elements
+	dq.push_front(2);
+	dq.push_front(4);
+
+	for (auto it: dq) {
+		cout << it << ", ";
+	}
+	cout << endl;
+}
+```
