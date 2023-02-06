@@ -78,3 +78,8 @@ int main() {
 	cout << endl;
 }
 ```
+
+## linked_list
+
+<p>Linked list is a data structure that uses a begining pointer and a Next pointer to connect with each other.</p>
+<img src="https://media.geeksforgeeks.org/wp-content/cdn-uploads/20200922124319/Singly-Linked-List1.png">
